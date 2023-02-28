@@ -15,10 +15,9 @@ module.exports = (sequelize:any, DataTypes:any) => {
     name!:string
     static associate(models:any) {
       // define association here
-      priority.belongsToMany(models.User,{
-        through:'user',
+      priority.hasMany(models.Task,{
+
         foreignKey:'priority_id'
-        
       })
     }
   }
@@ -26,7 +25,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'priority',
+    modelName: 'Priority',
   });
   return priority;
 };

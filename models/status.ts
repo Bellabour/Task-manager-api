@@ -15,8 +15,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     name!:string
     static associate(models:any) {
       // define association here
-      status.belongsToMany(models.User,{
-        through:'user',
+      status.hasMany(models.Task,{
         foreignKey:'status_id'
       })
     }
@@ -25,7 +24,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'status',
+    modelName: 'Status',
   });
   return status;
 };

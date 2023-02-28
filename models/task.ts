@@ -29,6 +29,9 @@ module.exports = (sequelize:any, DataTypes:any) => {
       Task.belongsToMany(models.User,{
         through:'UserTasks',
       }) 
+      Task.hasOne(models.Status)
+      Task.hasOne(models.Priority)
+
  }
   }
   Task.init({

@@ -22,10 +22,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       User.belongsToMany(models.Task,{
         through:'UserTasks',
       })
-      User.hasOne(models.status)
-      User.hasOne(models.priority)
-
-    }
+}
     
   }
   User.init(
