@@ -2,29 +2,27 @@
 import{
   Model
 } from'sequelize';
-interface Statusattributes {
-  name: string;
+interface priorityAttributes{
+  Priority_name:string;
 }
 module.exports = (sequelize:any, DataTypes:any) => {
-  class status extends Model<Statusattributes>implements status {
+  class Priorities extends Model<priorityAttributes>implements Priorities{
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    name!:string
+    Priority_name!:string
     static associate(models:any) {
       // define association here
-      status.hasMany(models.Task,{
-        foreignKey:'status_id'
-      })
+      Priorities.belongsTo(models.Tasks,{ foreignKey: 'id'})
     }
   }
-  status.init({
-    name: DataTypes.STRING
+  Priorities.init({
+    Priority_name: {type:DataTypes.STRING,allowNull:true,unique:true}
   }, {
     sequelize,
-    modelName: 'Status',
+    modelName: 'Priorities',
   });
-  return status;
+  return Priorities;
 };
