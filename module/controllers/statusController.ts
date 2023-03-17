@@ -9,7 +9,7 @@ const status= new statusService
 
 
 const createStatus = expressAsyncHandler(async (req: any, res: any) => {
-    const admin = await status.createStatus(req, res);
+    const admin = await status.createStatus(req,res);
   });
   const deleteStatus = expressAsyncHandler(async (req: any, res: any) => {
     const admin = await status.deleteStatus(req, res);

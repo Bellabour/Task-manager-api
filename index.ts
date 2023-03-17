@@ -18,7 +18,7 @@ app.use(passport.initialize());
 
 app.use('/auth',require('./module/routes/authRoutes'))
 app.use('/auth/permission',require('./module/routes/permRoutes'))
-app.use('/auth/role',require('./module/routes/roleRouter'))
+app.use('/auth/role',require('./module/routes/roleRoutes'))
 app.use('/auth/status',require('./module/routes/statusRoutes'))
 
 //var indexRouter = require('./routes/index');

@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router();
+
 const passport = require("passport");
 const Helper = require("../../utils/helper");
 const helper = new Helper();
 const bodyParser = require("body-parser");
-
+import express from 'express'
 require("../../config/passport")(passport);
 
 import db from "../../models/index";
@@ -19,7 +18,7 @@ const RolePermissions = db.Role_Permission;
 
 export default class roleService {
   //create role
-  createRole = async function (req: any, res: any) {
+  createRole = async function (req: any, res:any ) {
     {
       helper
         .checkPermission(req.user.Roleid, "role_add")

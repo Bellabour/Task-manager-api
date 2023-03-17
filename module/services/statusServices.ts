@@ -22,26 +22,18 @@ const RolePermissions=db.Role_Permission
 
 export default class statusService{
     createStatus=async function(req:any, res:any) {
-        helper.checkPermission(req.user.Roleid, 'status_add').then((_rolePerm: any) => {
-            if (req.body.status_name == "") {
-          return res.status(422).json({ message: "status_name cannot be empty" });
-        } else if (!req.body.status_name) {
-          return res
-            .status(412)
-            .json({ message: "status_name should be spelt correctly" });
-        }
+        helper.checkPermission(req.user.Roleid, 'status_add').then(async(_rolePerm: any) => {
         let info = {
             Status_name: req.body.status_name,
         };
         console.log(info)
         if (info)
           try {
-             Status.create(info);
+            await Status.create(info);
             res.status(200).json({ message: "Status added successfully!" });
           } catch (error:any) {
-            return res
-              .status(400)
-              .json({ message: error.message || "we just got an error" });
+            return await 
+            res.status(400).json({ message: error.message || "we just got an error" });
     }})};
    deleteStatus=async function (req:any, res:any) {
         helper.checkPermission(req.user.Roleid, 'status_delete').then((_rolePerm:any) => {
@@ -107,7 +99,7 @@ export default class statusService{
             res.status(403).send(error);
         });
     };
-statusList=async function (req:any, res:any) {
+    statusList=async function (req:any, res:any) {
         helper.checkPermission(req.user.Roleid, 'status_get_all').then((_rolePerm:any) => {
             Status
                 .findAll()
