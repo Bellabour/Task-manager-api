@@ -36,7 +36,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     static associate(models: any) {
       // define association here
       Users.belongsToMany(models.Tasks, { through: "User_Tasks",onDelete:'SET NULL',
-      onUpdate:"CASCADE"});
+      onUpdate:"CASCADE",foreignKey:'User_id'});
       Users.belongsTo(models.Role);
     }
   }

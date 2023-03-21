@@ -22,6 +22,7 @@ app.use('/auth/role',require('./module/routes/roleRoutes'))
 app.use('/auth/status',require('./module/routes/statusRoutes'))
 app.use('/auth/priority',require('./module/routes/priorityRoutes'))
 app.use('/auth/user',require('./module/routes/userRoutes'))
+app.use('/auth/task',require('./module/routes/taskRouter'))
 
 //var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/userRoutes');

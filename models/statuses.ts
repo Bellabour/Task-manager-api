@@ -15,9 +15,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     Status_name!:string
     static associate(models:any) {
       // define association here
-      Statuses.belongsTo(models.Tasks, {
-        foreignKey: 'id'
-      })
+      Statuses.hasMany(models.Tasks)
     }
   }
   Statuses.init({

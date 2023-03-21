@@ -175,4 +175,29 @@ export default class userService {
         res.status(403).send(error);
       });
   };
+addUserTask=async function(req:any,res:any){helper.checkPermission(req.user.Roleid, "user_addTask").then(async(rolePerm: any) => {
+    if (req.body.Fullname == "") {
+      return res.status(422).json({ message: "Fullname cannot be empty" });
+    } else if (!req.body.Fullname) {
+      return res
+        .status(412)
+        .json({ message: "Task_name should be spelt correctly" });
+    }
+    try {
+      let std = await Task.findByPk(req.params.id, {});
+      let info = {
+       Fullname: req.body.Fullname,
+      };
+      let crs = await User.findOne({ where: info });
+      if (crs) {
+      } else
+        return res.status(400).send({ message: "User could not be found" });
+      await std.addUser(crs);
+      return res.status(200).send("Priority added succesfully");
+    } catch (error:any) {
+      return res.status(400).json({ message: error.message });
+    }
+  });
+};
 }
+

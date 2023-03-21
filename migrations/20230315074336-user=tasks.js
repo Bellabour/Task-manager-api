@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Userid: {
+      User_id: {
         type: Sequelize.INTEGER,
         primaryKey:true,
         addConstraint:`Users`,
@@ -19,7 +19,7 @@ module.exports = {
           foreignkey:'userid'
         }
       },
-      Taskid: {
+      Task_id: {
         type: Sequelize.INTEGER,
         primaryKey:true,
         addConstraint:`Tasks`,

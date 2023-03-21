@@ -5,6 +5,7 @@ const Helper = require("../../utils/helper");
 const helper = new Helper();
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+import {Request,Response}from 'express'
 require("../../config/passport")(passport);
 
 import db from "../../models/index";
@@ -18,7 +19,7 @@ const Usertasks = db.User_tasks;
 const RolePermissions = db.Role_Permission;
 
 export default class AuthService {
-  createAdmin = async function (req: any, res: any) {
+  createAdmin = async function (req: Request, res: Response) {
     if (!req.body.Email || !req.body.Password || !req.body.Fullname) {
       res.status(400).send({
         msg: "Please pass Email, Password and Fullname.",
@@ -47,14 +48,14 @@ export default class AuthService {
         });
     }
   };
-  givePermission = async function (req: any, res: any) {
+  givePermission = async function (req: Request, res: Response) {
     try {
       let cls = await Perm.findByPk(req.params.id, {});
       console.log(cls);
       let info = {
         Role_name: req.body.Role_name,
       };
-      const std = await Role.findOne({ where: info });
+      let std = await Role.findOne({ where: info });
       console.log(std);
       await cls.addRole(std);
       res.status(200).send("permission added succesfully");

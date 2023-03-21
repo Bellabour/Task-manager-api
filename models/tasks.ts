@@ -22,11 +22,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     static associate(models:any) {
       // define association here
       Tasks.belongsToMany(models.Users, { through: "User_Tasks",onDelete:'SET NULL',
-      onUpdate:"CASCADE"});
-      Tasks.hasOne(models.Statuses, {
-        foreignKey: "id",
-      });
-      Tasks.hasOne(models.Priorities, { foreignKey: "id" });
+      onUpdate:"CASCADE",foreignKey:'Task_id'});
+      Tasks.belongsTo(models.Priorities)
+      Tasks.belongsTo(models.Statuses)
     }
   }
   Tasks.init(

@@ -12,5 +12,6 @@ router.delete("/:id", authpassport, routes.deleteUser);
 router.put("/:id", authpassport, routes.updateUser);
 router.get("/", authpassport, routes.listUsers);
 router.get('/:id',authpassport,routes.listUser)
+router.post('/task/:id',authpassport,routes.addTask)
 
 module.exports=router

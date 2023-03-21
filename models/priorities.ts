@@ -15,7 +15,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     Priority_name!:string
     static associate(models:any) {
       // define association here
-      Priorities.belongsTo(models.Tasks,{ foreignKey: 'id'})
+      Priorities.hasMany(models.Tasks)
     }
   }
   Priorities.init({

@@ -23,5 +23,7 @@ const createUser = expressAsyncHandler(async (req: any, res: any) => {
   const listUser = expressAsyncHandler(async (req: any, res: any) => {
     const admin = await user.listUser(req, res);
   });
-
-  export default{createUser,deleteUser,updateUser,listUser,listUsers}
+  const addTask=expressAsyncHandler(async(req:any,res:any)=>{
+    const admin = await user.addUserTask(req,res)
+  });
+  export default{createUser,deleteUser,updateUser,listUser,listUsers,addTask}
